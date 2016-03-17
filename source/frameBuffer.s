@@ -1,9 +1,9 @@
 .section .data
-.align 12
+.align 4
 
 /*	
 	Structure: FrameBufferData
-	Structure containing offsets and information for drawing graphics
+	Structure containing offsets and information for drawing graphics 
 */
 
 .globl FrameBufferData
@@ -50,9 +50,10 @@ InitFrameBuffer:
 	movhi		result,	#0
 	movhi		pc,		lr
 
-	fbDataAddress .req	r3			// Set r3 -> fbDataAddress
+	push {r4,lr}
 
-	push		{lr}				// Push link register unto the stack for recovery
+	fbDataAddress .req	r4			// Set r4 -> fbDataAddress
+
 	ldr 		fbDataAddress,=FrameBufferData		// Load FrameBufferData structure into fbDataAddress
 
 	str			width,	[fbDataAddress,#0]		// Store fbDataAddress + 0x00 (width physical) into width
@@ -75,10 +76,10 @@ InitFrameBuffer:
 
 	teq 		result,	#0 			// Test if our result is 0, if so, failed, return 0.
 	movne		result,	#0
-	popne		{pc}
+	popne		{r4,pc}
 
 	mov 		result,	fbDataAddress				// Otherwise, move address and return it for usage
-	pop 		{pc}
+	pop 		{r4,pc}
 	.unreq		result
 	.unreq		fbDataAddress
 

@@ -15,14 +15,14 @@ Disassembly of section .text:
     800c:	93520020 	cmpls	r2, #32
     8010:	83a00000 	movhi	r0, #0
     8014:	81a0f00e 	movhi	pc, lr
-    8018:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-    801c:	e59f303c 	ldr	r3, [pc, #60]	; 8060 <InitFrameBuffer+0x5c>
-    8020:	e5830000 	str	r0, [r3]
-    8024:	e5831004 	str	r1, [r3, #4]
-    8028:	e5830008 	str	r0, [r3, #8]
-    802c:	e583100c 	str	r1, [r3, #12]
-    8030:	e5832014 	str	r2, [r3, #20]
-    8034:	e1a00003 	mov	r0, r3
+    8018:	e92d4010 	push	{r4, lr}
+    801c:	e59f403c 	ldr	r4, [pc, #60]	; 8060 <InitFrameBuffer+0x5c>
+    8020:	e5840000 	str	r0, [r4]
+    8024:	e5841004 	str	r1, [r4, #4]
+    8028:	e5840008 	str	r0, [r4, #8]
+    802c:	e584100c 	str	r1, [r4, #12]
+    8030:	e5842014 	str	r2, [r4, #20]
+    8034:	e1a00004 	mov	r0, r4
     8038:	e2800101 	add	r0, r0, #1073741824	; 0x40000000
     803c:	e3a01001 	mov	r1, #1
     8040:	eb000029 	bl	80ec <MailWrite>
@@ -30,10 +30,10 @@ Disassembly of section .text:
     8048:	eb000034 	bl	8120 <MailRead>
     804c:	e3300000 	teq	r0, #0
     8050:	13a00000 	movne	r0, #0
-    8054:	149df004 	popne	{pc}		; (ldrne pc, [sp], #4)
-    8058:	e1a00003 	mov	r0, r3
-    805c:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
-    8060:	00009000 	.word	0x00009000
+    8054:	18bd8010 	popne	{r4, pc}
+    8058:	e1a00004 	mov	r0, r4
+    805c:	e8bd8010 	pop	{r4, pc}
+    8060:	00008210 	.word	0x00008210
 
 00008064 <GetGpioAddress>:
     8064:	e59f0074 	ldr	r0, [pc, #116]	; 80e0 <SetGpioState+0x3c>

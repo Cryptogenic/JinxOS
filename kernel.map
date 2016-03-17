@@ -53,14 +53,14 @@ LOAD build/systemTimer.o
                 0x000081d4                GetTimeStamp
                 0x000081e4                Delay
 
-.data           0x00009000     0x1000
+.data           0x00008210       0x30
  *(.data)
- .data          0x00009000     0x1000 build/frameBuffer.o
-                0x00009000                FrameBufferData
- .data          0x0000a000        0x0 build/gpio.o
- .data          0x0000a000        0x0 build/mailbox.o
- .data          0x0000a000        0x0 build/main.o
- .data          0x0000a000        0x0 build/systemTimer.o
+ .data          0x00008210       0x30 build/frameBuffer.o
+                0x00008210                FrameBufferData
+ .data          0x00008240        0x0 build/gpio.o
+ .data          0x00008240        0x0 build/mailbox.o
+ .data          0x00008240        0x0 build/main.o
+ .data          0x00008240        0x0 build/systemTimer.o
 
 /DISCARD/
  *(*)
