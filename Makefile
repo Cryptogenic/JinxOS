@@ -12,3 +12,6 @@ build/kernel.elf: $(SRC)
 
 clean:
 	rm -f build/*.elf build/*.img
+	
+create:
+	mkdir -p build
